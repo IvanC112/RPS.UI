@@ -17,41 +17,9 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    let choice = prompt("Please select your choice!");
-
-    if (choice === null){
-        return "You cancled the game";
-    }
-    else {
-
-    choice = choice.toLowerCase();
-
-    while (choice !== "rock" && choice!== "paper" && choice != "scissors"){
-        choice = prompt("Please select your choice!").toLowerCase();
-    }
-
-    switch (choice) {
-        case "rock":
-            return choice;
-            break;
-        case "paper":
-            return choice;
-            break;
-        case "scissors":
-            return choice;
-            break;
-    }
-}
-
-}
-
 function singleRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        console.log("This round was a tie, try again!");
-        playerSelection = getPlayerChoice();
-        computerSelection = getComputerChoice();
-        return singleRound(playerSelection, computerSelection);
+        return "This round was a tie, try again!"
     }
     else if (playerSelection === "rock" && computerSelection === "scissors") {
         playerWins+=1;
@@ -69,40 +37,76 @@ function singleRound(playerSelection, computerSelection) {
         computerWins+=1;
         return "You Lose! Rock beats Scissors";
     }
-    else if (playerSelection === "paper" && playerSelection === "scissors") {
+    else if (playerSelection === "paper" && computerSelection === "scissors") {
         computerWins+=1;
         return "You Lose! Scissors beat Paper";
     }
-    else {
+    else if (playerSelection === "paper" && computerSelection === "rock") {
         playerWins+=1;
         return "You Win! Paper beats Rock";
     }
+
  }
 
- function game() {
+ function handleClick(e) {
 
-    for(let i = 0; i < 5; ++i) {
+    const visualplayerWins = document.querySelector('#playerWins');
+    const visualcomputerWins = document.querySelector('#computerWins');
+    const outputResult = document.querySelector('.outputMessage');
 
-        let playerChoice = getPlayerChoice();
+    const roundWinner = singleRound(e.target.alt, getComputerChoice());
+    
+    outputResult.textContent = roundWinner;
 
-        if(playerChoice === "You cancled the game") {
-            console.log("You canceled the game");
-            break;
-        }
-
-        let computerChoice = getComputerChoice();
-
-        console.log(singleRound(playerChoice, computerChoice));
-
-        if (playerWins === 3) {
-            console.log(`You won ${playerWins} times out of 5!`);
-            break;
-        }
-        else if (computerWins === 3) {
-            console.log(`Computer dominated, it won ${computerWins} times out of 5! `);
-            break;
-        }
+    if (roundWinner.includes('You Win!')) {
+        visualplayerWins.textContent++;
     }
+    else if (roundWinner.includes('You Lose!')) {
+        visualcomputerWins.textContent++;
+    }
+
+    if (playerWins === 5) {
+        outputResult.textContent = "Cogratulations you won against the machine in a match of first to 5! To play again, please press the reset button!";
+
+        const disableButtons = document.querySelectorAll('.bottom-section input');
+
+        disableButtons.forEach((button)=> {
+            button.disabled = true;
+        })
+        
+    }
+    else if (computerWins === 5) {
+        outputResult.textContent = "You failed us all, the machine dominated you! To get your revent, please press the reset button";
+
+        const disableButtons = document.querySelectorAll('.bottom-section input');
+
+        disableButtons.forEach((button)=> {
+            button.disabled = true;
+        })
+    }
+
  }
- 
-game();
+
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+const resetButton = document.querySelector('.reset');
+
+rockButton.addEventListener('click', handleClick);
+paperButton.addEventListener('click', handleClick);
+scissorsButton.addEventListener('click', handleClick);
+
+resetButton.addEventListener('click', ()=> {
+    playerWins = 0;
+    computerWins = 0;
+
+    const visualplayerWins = document.querySelector('#playerWins');
+    const visualcomputerWins = document.querySelector('#computerWins');
+    const outputResult = document.querySelector('.outputMessage');
+
+    visualplayerWins.textContent = 0;
+    visualcomputerWins.textContent = 0;
+    outputResult.textContent = '';
+
+})
+

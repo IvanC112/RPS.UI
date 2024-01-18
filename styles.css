@@ -1,0 +1,87 @@
+* {
+    padding:0;
+    margin:0;
+}
+
+.flex-container {
+    background-color: #FAEBD7;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.top-section {
+    text-align:center;  
+}
+
+.top-section h1 {
+    padding:10px;
+}
+
+.outputMessage {
+    padding:10px;
+}
+
+.middle-section {
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    margin-top:60px; 
+}
+
+.reset {
+    display:flex;
+    align-items:center;
+}
+
+.reset button {
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius: 10px;
+    background-color: #FAEBD7;
+}
+
+.playerSelection, .computerSelection {
+    width:250px;
+    height:250px;
+    text-align:center;
+    background-color:black;
+    color: #FAEBD7;
+    border-radius:10px;
+}
+
+#playerWins, #computerWins {
+    font-size:100px;
+    margin-top:50px;
+}
+
+.playerSelection {
+    margin-left:80px;
+}
+
+.computerSelection {
+    margin-right:80px;
+}
+
+.playerSelection div, .computerSelection div {
+    border-bottom:1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bottom-section {
+    width:100%;
+    display:flex;
+    gap:110px;
+    justify-content:center;
+    margin-top:40px;
+}
+
+#rock, #paper, #scissors {
+    border: 3px solid black;
+    border-radius:100px;
+}
+
+
+

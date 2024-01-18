@@ -4,9 +4,40 @@
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
         <title>Rock-Paper-Scissors</title>
-        <script src="javascript.js"></script>
+        <script src="javascript.js" defer></script>
+        <link rel = "stylesheet" href = "styles.css">
     </head>
     <body>
-
+        <div class = "flex-container">
+            <div class = "top-section">
+                <h1>Humanity Versus Machine</h1>
+                <h4>Win 5 points first and beat the machine</h4>
+            </div>
+            <div class = "outputMessage"></div>
+            <div class = "middle-section">
+                <div class = "playerSelection">
+                    <div>You</div>
+                    <p id = "playerWins">0</p>
+                </div>
+                <div class = "reset">
+                    <button>Reset</button>
+                </div>
+                <div class = "computerSelection">
+                    <div>Machine</div>
+                    <p id = "computerWins">0</p>
+                </div>
+            </div>
+            <div class = "bottom-section">
+                <div id = "rock">
+                    <input type = "image" alt = "rock" src = "./images/Rock.png" width = "170" height = "140"> 
+                </div>
+                <div id = "paper">
+                    <input type = "image" alt = "paper" src = "./images/Paper.png" width = "170" height = "140">
+                </div>
+                <div id = "scissors">
+                    <input type = "image" alt = "scissors" src = "./images/scissors.png" width = "170" height = "140"> 
+                </div>
+            </div>
+        </div>
     </body>
 </html>
